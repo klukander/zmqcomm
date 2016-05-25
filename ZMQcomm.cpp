@@ -14,11 +14,11 @@ void CallbackHandler(evtmsg evt){
 	if (evt.type == EZ){
 		//std::chrono::time_point<int, std::chrono::milliseconds> zerotime = std::chrono::steady_clock::now();
 		//zerotime = std::chrono::steady_clock::now();
-		std::cout << "zero time: " << std::endl;// << std::put_time(zerotime.time_since_epoch, "%F %T") << std::endl;
+		std::cout << "zero time: " << std::endl;// << std::put_time(zerotime.time_since_epoch, "%F %T") << std::e_endl;
 	}
 	if (evt.type == ET && evt.task == TQ){
-		if (evt.phase == begin) std::cout << "queen's begins!" << std::endl;
-		else if (evt.phase == end) std::cout << "queen's ends!" << std::endl;
+		if (evt.phase == e_begin) std::cout << "queen's e_begins!" << std::endl;
+		else if (evt.phase == e_end) std::cout << "queen's ends!" << std::endl;
 	}
 	if (evt.type == EI){ std::cout << "instruction" << std::endl; }
 
@@ -28,7 +28,8 @@ void CallbackHandler(evtmsg evt){
 
 }
 
-int _tmain(int argc, _TCHAR* argv[])
+//int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char** argv)
 {
 	ZMQCommunicator *zmqc = new ZMQCommunicator(PAIR, 1000);
 	zmqc->setHandler(CallbackHandler);

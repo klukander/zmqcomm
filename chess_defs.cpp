@@ -9,7 +9,7 @@ enum evttype {	EZ, zero-time
 				EG, gazetracking
 				EM, move
 				ENR }; // NR = Null/notrecognized
-enum evtphase{ begin, end };
+enum evtphase{ e_begin, e_end };
 enum tasktype  TQ, Queen's 
 			   TM, Model Copy
 			   TC, Classify B/W
@@ -25,8 +25,8 @@ evtmsg Parse(std::string msg){
 	switch (msg[0]){
 	case 'Z': //zerotime
 		ret.type = EZ;
-		if (msg[1] == 'T') ret.phase = begin;
-		else ret.phase = end;
+		if (msg[1] == 'T') ret.phase = e_begin;
+		else ret.phase = e_end;
 		break;
 	case 'T': //task
 		ret.type = ET;
@@ -39,21 +39,21 @@ evtmsg Parse(std::string msg){
 		case 'N': ret.task = TN; break;
 		}
 
-		if (msg[2] == 'B') ret.phase = begin;
-		else ret.phase = end;
+		if (msg[2] == 'B') ret.phase = e_begin;
+		else ret.phase = e_end;
 		break;
 	case 'C': //calibration
 		ret.type = EC;
-		if (msg[1] == 'B') ret.phase = begin;
-		else ret.phase = end;
+		if (msg[1] == 'B') ret.phase = e_begin;
+		else ret.phase = e_end;
 		break;
 	case 'E': //event
 		ret.type = EE;
 		break;
 	case 'I': //instruction
 		ret.type = EI;
-		if (msg[1] == 'B') ret.phase = begin;
-		else ret.phase = end;
+		if (msg[1] == 'B') ret.phase = e_begin;
+		else ret.phase = e_end;
 		break;
 	case 'G': //gaze tracking
 		ret.type = EG;
@@ -86,7 +86,6 @@ evtmsg Parse(std::string msg){
 		else{
 			//do we need to do something here?
 		}
-
 
 		break;
 	default:
