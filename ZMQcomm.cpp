@@ -22,6 +22,10 @@ void CallbackHandler(evtmsg evt){
 	}
 	if (evt.type == EI){ std::cout << "instruction" << std::endl; }
 
+	if (evt.type == EM){
+		std::cout << piecenames.at(evt.target) << " moves from " << squarenames.at(evt.from) << " to " << squarenames.at(evt.to) << std::endl;
+	}
+
 }
 
 int _tmain(int argc, _TCHAR* argv[])
